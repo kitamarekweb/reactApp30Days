@@ -3,7 +3,8 @@ class App extends React.Component {
         return (
             <div className="notificationsFrame">
                 <div className="panel">
-                    {/*sdfasdf*/}
+                    <Header />
+                    <Content />
                 </div>
             </div>
         )
