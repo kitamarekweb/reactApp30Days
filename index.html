@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Hello world</title>
-    <!-- Script tags including React -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
-    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+  <meta charset="utf-8">
+  <title>Hello world</title>
+  <!-- Script tags including React -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+  <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
 
-    <!-- Latest compiled and minified CSS -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
-          <!--integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+  <!-- Latest compiled and minified CSS -->
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
+  <!--integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
 
-    <!-- Optional theme -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"-->
-          <!--integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
+  <!-- Optional theme -->
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"-->
+  <!--integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
 
-    <!-- Latest compiled and minified JavaScript -->
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"-->
-            <!--integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"-->
-            <!--crossorigin="anonymous"></script>-->
+  <!-- Latest compiled and minified JavaScript -->
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"-->
+  <!--integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"-->
+  <!--crossorigin="anonymous"></script>-->
 </head>
 <body>
 <div id="app"></div>
@@ -27,101 +27,122 @@
 
 <script type="text/babel">
 
-var activity1 =
+  const activities = [
     {
-        timestamp: new Date().getTime(),
-        text: "Ate lunch 3333",
-        user: {
-            id: 1,
-            name: 'Nate 3333',
-            avatar: "http://www.croop.cl/UI/twitter/images/doug.jpg"
+      timestamp: new Date().getTime(),
+      text: "Ate lunch",
+      user: {
+        id: 1, name: 'Nate',
+        avatar: "http://www.croop.cl/UI/twitter/images/doug.jpg"
+      },
+      comments: [{from: 'Ari', text: 'Me too!'}]
     },
-        comments: [
-            { from: 'Ari 333', text: 'Me too 333!' }
-        ]
+    {
+      timestamp: new Date().getTime(),
+      text: "Woke up early for a beautiful run",
+      user: {
+        id: 2, name: 'Ari',
+        avatar: "http://www.croop.cl/UI/twitter/images/doug.jpg"
+      },
+      comments: [{from: 'Nate', text: 'I am so jealous'}]
+    },
+    {
+      timestamp: '2017-05-12',
+      text: "Multi props passed to component",
+      user: {
+        id: 999, name: 'Batman',
+        avatar: "http://www.croop.cl/UI/twitter/images/doug.jpg"
+      },
+      comments: [{from: 'Superman', text: 'Kryptonit'}]
     }
+  ]
 
 
-    class Header extends React.Component {
-        render() {
-            return (
-                    <div className="header">
-                        <div className="fa fa-more"></div>
+  class Header extends React.Component {
+    render() {
+      return (
+        <div className="header">
+          <div className="fa fa-more"></div>
 
-                        {/*<span className="title">Timeline</span>*/}
-                        <span className="title">
+          {/*<span className="title">Timeline</span>*/}
+          <span className="title">
                             {this.props.title}
                         </span>
 
-                        <input
-                                type="text"
-                                className="searchInput"
-                                placeholder="Search ..."/>
+          <input
+            type="text"
+            className="searchInput"
+            placeholder="Search ..."/>
 
-                        <div className="fa fa-search searchIcon"></div>
-                        <br/>
-                    </div>
-            )
-        }
+          <div className="fa fa-search searchIcon"></div>
+          <br/>
+        </div>
+      )
     }
+  }
 
-    class Content extends React.Component {
-        render() {
-            const {activity} = this.props;
+  class Content extends React.Component {
+    render() {
+      const {activity} = this.props;
 
+      return (
+        <div className="content">
+          <div className="line"></div>
+
+          {/* Timeline item */}
+          {activities.map((activity) => {
             return (
-                    <div className="content">
-                        <div className="line"></div>
+              <div className="item">
+                <div className="avatar">
+                  {/*   <img
+                   alt='Doug'
+                   src="http://www.croop.cl/UI/twitter/images/doug.jpg"/>
+                   */}
+                  <img src={activity.user.avatar} alt={activity.user.name}/>
+                  Doug
+                  {activity.user.name}
+                </div>
 
-                        {/* Timeline item */}
-                        <div className="item">
-                            <div className="avatar">
-                                {/*   <img
-                                    alt='Doug'
-                                    src="http://www.croop.cl/UI/twitter/images/doug.jpg"/>
-                                 */}
-                                <img src={activity.user.avatar} alt={activity.user.name}/>
-                                Doug
-                                {activity.user.name}
-                            </div>
-
-                            <span className="time">
+                <span className="time">
             An hour ago:
-                                {activity.timestamp}
+                  {activity.timestamp}
           </span>
-                            <p>Ate lunch</p>
-                            <p>{activity.text}</p>
-                            <div className="commentCount">
-                                2,
-                                {activity.comments.length}
-                            </div>
-                        </div>
+                <p>Ate lunch</p>
+                <p>{activity.text}</p>
+                <div className="commentCount">
+                  2,
+                  {activity.comments.length}
+                </div>
+              </div>
 
-                        {/* ... */}
-                        <br/>
-                    </div>
             )
-        }
+          }
+          )}
+          {/* ... */}
+          <br/>
+        </div>
+      )
     }
+  }
 
-    class App extends React.Component {
-        render() {
-            return (
-                    <div className="notificationsFrame">
-                        <div className="panel">
-                            <Header title="Timeline2"/>
-                            <Header title="Timeline100"/>
-                            <Header title="Timeline Infinity"/>
-                            <Content activity={activity1}/>
-                        </div>
-                    </div>
-            )
-        }
+  class App extends React.Component {
+    render() {
+      return (
+        <div className="notificationsFrame">
+          <div className="panel">
+            <Header title="Timeline2"/>
+            <Header title="Timeline100"/>
+            <Header title="Timeline Infinity"/>
+            <Content activity={activities}/>
+          </div>
+        </div>
+      )
     }
+  }
 
 
-    var mount = document.querySelector('#app');
-    ReactDOM.render(<App />, mount);
+  var mount = document.querySelector('#app');
+  ReactDOM.render(<App />, mount);
 </script>
 </body>
 </html>
