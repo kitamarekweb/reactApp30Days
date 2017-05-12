@@ -9,13 +9,17 @@
     <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
+          <!--integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"-->
+          <!--integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"-->
+            <!--integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"-->
+            <!--crossorigin="anonymous"></script>-->
 </head>
 <body>
 <div id="app"></div>
@@ -29,14 +33,18 @@
                     <div className="header">
                         <div className="fa fa-more"></div>
 
-                        <span className="title">Timeline</span>
+                        {/*<span className="title">Timeline</span>*/}
+                        <span className="title">
+                            {this.props.title}
+                        </span>
 
                         <input
                                 type="text"
                                 className="searchInput"
-                                placeholder="Search ..." />
+                                placeholder="Search ..."/>
 
                         <div className="fa fa-search searchIcon"></div>
+                        <br/>
                     </div>
             )
         }
@@ -53,7 +61,7 @@
                             <div className="avatar">
                                 <img
                                         alt='Doug'
-                                        src="http://www.croop.cl/UI/twitter/images/doug.jpg" />
+                                        src="http://www.croop.cl/UI/twitter/images/doug.jpg"/>
                                 Doug
                             </div>
 
@@ -67,7 +75,7 @@
                         </div>
 
                         {/* ... */}
-
+                        <br/>
                     </div>
             )
         }
@@ -78,8 +86,9 @@
             return (
                     <div className="notificationsFrame">
                         <div className="panel">
-                            <Header />
-                            <br/>
+                            <Header title="Timeline2"/>
+                            <Header title="Timeline100"/>
+                            <Header title="Timeline Infinity"/>
                             <Content />
                         </div>
                     </div>
