@@ -27,17 +27,17 @@
 
 <script type="text/babel">
 
-const activities =
+var activity1 =
     {
         timestamp: new Date().getTime(),
-            text: "Ate lunch",
+        text: "Ate lunch 3333",
         user: {
-        id: 1,
-            name: 'Nate',
+            id: 1,
+            name: 'Nate 3333',
             avatar: "http://www.croop.cl/UI/twitter/images/doug.jpg"
     },
         comments: [
-            { from: 'Ari', text: 'Me too!' }
+            { from: 'Ari 333', text: 'Me too 333!' }
         ]
     }
 
@@ -67,6 +67,8 @@ const activities =
 
     class Content extends React.Component {
         render() {
+            const {activity} = this.props;
+
             return (
                     <div className="content">
                         <div className="line"></div>
@@ -74,18 +76,24 @@ const activities =
                         {/* Timeline item */}
                         <div className="item">
                             <div className="avatar">
-                                <img
-                                        alt='Doug'
-                                        src="http://www.croop.cl/UI/twitter/images/doug.jpg"/>
+                                {/*   <img
+                                    alt='Doug'
+                                    src="http://www.croop.cl/UI/twitter/images/doug.jpg"/>
+                                 */}
+                                <img src={activity.user.avatar} alt={activity.user.name}/>
                                 Doug
+                                {activity.user.name}
                             </div>
 
                             <span className="time">
-            An hour ago
+            An hour ago:
+                                {activity.timestamp}
           </span>
                             <p>Ate lunch</p>
+                            <p>{activity.text}</p>
                             <div className="commentCount">
-                                2
+                                2,
+                                {activity.comments.length}
                             </div>
                         </div>
 
@@ -104,7 +112,7 @@ const activities =
                             <Header title="Timeline2"/>
                             <Header title="Timeline100"/>
                             <Header title="Timeline Infinity"/>
-                            <Content />
+                            <Content activity={activity1}/>
                         </div>
                     </div>
             )
