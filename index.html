@@ -20,12 +20,16 @@
   <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"-->
   <!--integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"-->
   <!--crossorigin="anonymous"></script>-->
+
+
 </head>
 <body>
 <div id="app"></div>
 
 
 <script type="text/babel">
+//    import ActivityItem from "./components/ActivityItem"
+//    import Content from "./components/content"
 
   const activities = [
     {
@@ -57,7 +61,6 @@
     }
   ]
 
-
   class Header extends React.Component {
     render() {
       return (
@@ -82,50 +85,58 @@
   }
 
   class Content extends React.Component {
-    render() {
-      const {activity} = this.props;
+  render() {
+    const {activities} = this.props;
 
-      return (
-        <div className="content">
-          <div className="line"></div>
+    return (
+      <div className="content">
+        <div className="line"></div>
 
-          {/* Timeline item */}
-          {activities.map((activity) => {
-            return (
-              <div className="item">
-                <div className="avatar">
-                  {/*   <img
-                   alt='Doug'
-                   src="http://www.croop.cl/UI/twitter/images/doug.jpg"/>
-                   */}
-                  <img src={activity.user.avatar} alt={activity.user.name}/>
-                  Doug
-                  {activity.user.name}
-                </div>
+        {/* Timeline item */}
+        {activities.map((activity) => (
+            <ActivityItem activity={activity} />
+          )
+        )}
+        {/* ... */}
 
-                <span className="time">
-            An hour ago:
-                  {activity.timestamp}
-          </span>
-                <p>Ate lunch</p>
-                <p>{activity.text}</p>
-                <div className="commentCount">
-                  2,
-                  {activity.comments.length}
-                </div>
-              </div>
-
-            )
-          }
-          )}
-          {/* ... */}
-          <br/>
-        </div>
-      )
-    }
+      </div>
+    )
   }
+}
+
+  class ActivityItem extends React.component {
+      render() {
+        const {activity} = this.props;
+        return (
+          <div className="item">
+            <div className="avatar">
+              {/*   <img
+               alt='Doug'
+               src="http://www.croop.cl/UI/twitter/images/doug.jpg"/>
+               */}
+              <img src={activity.user.avatar} alt={activity.user.name}/>
+              Doug
+              {activity.user.name}
+            </div>
+
+            <span className="time">
+            An hour ago:
+              {activity.timestamp}
+          </span>
+            <p>Ate lunch</p>
+            <p>{activity.text}</p>
+            <div className="commentCount">
+              2,
+              {activity.comments.length}
+            </div>
+            <br/>
+          </div>
+        )
+      }
+    }
 
   class App extends React.Component {
+
     render() {
       return (
         <div className="notificationsFrame">
@@ -133,7 +144,7 @@
             <Header title="Timeline2"/>
             <Header title="Timeline100"/>
             <Header title="Timeline Infinity"/>
-            <Content activity={activities}/>
+            <Content activities={activities}/>
           </div>
         </div>
       )
